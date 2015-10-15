@@ -1,0 +1,9 @@
+{
+  "name": "YourThemeName",
+  "version": "1.0.0",
+  "description": "This project offers a useful starting point development of a theme for [Orchard](http://www.orchardproject.net/).",
+  "author": "Moov2",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}
