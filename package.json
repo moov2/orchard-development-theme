@@ -4,6 +4,9 @@
   "description": "This project offers a useful starting point development of a theme for [Orchard](http://www.orchardproject.net/).",
   "author": "Moov2",
   "devDependencies": {
-    "grunt": "^0.4.5"
+    "autoprefixer": "^6.0.3",
+    "grunt": "^0.4.5",
+    "grunt-postcss": "^0.6.0",
+    "grunt-sass": "^1.0.0"
   }
 }
