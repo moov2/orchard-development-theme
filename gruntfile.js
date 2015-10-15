@@ -4,24 +4,26 @@ module.exports = function(grunt) {
      * Properties used by tasks.
      */
     var config = {
-        // paths to directories / files used in the process.
-        paths: {
-            /**
-             * Directory that contains the CSS.
-             */
-            styles: './Styles',
+        /**
+            * Directory that contains the CSS.
+            */
+        styles: './Styles',
 
-            /**
-             * Directory that contains the JavaScript.
-             */
-            js: './Scripts',
-			
-            /**
-             * Theme artifacts from the build process will be placed in this directory.
-             */
-            dist: './dist'
-        }
+        /**
+            * Directory that contains the JavaScript.
+            */
+        js: './Scripts',
+        
+        /**
+            * Theme artifacts from the build process will be placed in this directory.
+            */
+        dist: './dist'
     };
+    
+    /**
+     * Loads all grunt tasks.
+     */
+    require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         
@@ -31,7 +33,9 @@ module.exports = function(grunt) {
          * ------
          */
 
-        // configuration values used to drive the build.
+        /**
+         * Configuration values used to drive the build.
+         */
         config: config,
         
         /**
@@ -47,8 +51,8 @@ module.exports = function(grunt) {
             options: {
                 processors: [require('autoprefixer')({browsers: 'last 1 version'})]
             },
-            dev: { src: '<%= config.paths.styles %>/*.css' },
-            dist: { src: '<%= config.paths.dist %>/Styles/*.css' }
+            dev: { src: '<%= config.styles %>/*.css' },
+            dist: { src: '<%= config.dist %>/Styles/*.css' }
         },
         
         /**
@@ -64,7 +68,7 @@ module.exports = function(grunt) {
              */
             dev: {
                 files: {
-                    '<%= config.paths.styles %>/Site.css': '<%= config.paths.styles %>/Site.scss'
+                    '<%= config.styles %>/Site.css': '<%= config.styles %>/Site.scss'
                 }
             },
 
@@ -74,20 +78,24 @@ module.exports = function(grunt) {
             dist: {
                 options: { outputStyle: 'compressed' },
                 files: {
-                    '<%= config.paths.dist %>/Styles/Site.css': '<%= config.paths.styles %>/Site.scss'
+                    '<%= config.dist %>/Styles/Site.css': '<%= config.styles %>/Site.scss'
                 }
             }
         },
     });
 
-    // third party plugins used in the build process.
-    grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-sass');
 
-    // build tasks.
+    /**
+     * ------
+     * Multiple tasks registered into a single task. These tasks should be run 
+     * via the `grunt` command.
+     * ------
+     */
     
     /**
-     * Handles creation of CSS files.
+     * Compiles Sass to CSS and then uses postcss to optimise and add vendor
+     * prefixes.
+     * `grunt styles`
      */
     grunt.registerTask('styles', ['sass:dev', 'postcss:dev']);
     grunt.registerTask('styles:dist', ['sass:dist', 'postcss:dist']);
