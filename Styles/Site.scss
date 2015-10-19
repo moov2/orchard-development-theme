@@ -3,3 +3,10 @@
  * Welcome to the Sass stylesheet, play nice!
  * -----------------------------------------------------------------------------
  */
+ 
+/**
+ * Using normalize.css to make all browsers render default elements consistently.
+ * http://necolas.github.io/normalize.css/
+ */
+
+@import "../bower_components/normalize-css/normalize"; 
