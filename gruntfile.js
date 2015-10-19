@@ -82,6 +82,20 @@ module.exports = function(grunt) {
                 }
             }
         },
+        
+        /**
+         * Watches for changes to source files that should trigger build tasks to
+         * be executed.
+         */
+        watch: {
+            /**
+             * Any changes to Sass files should trigger compilation of Sass to CSS.
+             */
+            styles: {
+                files: ['<%= config.styles %>/**/*.scss'],
+                tasks: ['styles']
+            }
+        }
     });
 
 
@@ -103,5 +117,5 @@ module.exports = function(grunt) {
     /**
      * Default task should be run while developing on the theme.
      */
-    grunt.registerTask('default', ['']);
+    grunt.registerTask('default', ['styles', 'watch']);
 };
