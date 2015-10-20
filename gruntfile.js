@@ -52,7 +52,7 @@ module.exports = function(grunt) {
                 
             },
             dist: {
-                files: { '<%= config.js %>/core.js': ['<%= config.js %>/app.js'] }
+                files: { '<%= config.js %>/core.js': ['<%= config.js %>/index.js'] }
             }
         },
         
@@ -106,6 +106,14 @@ module.exports = function(grunt) {
             styles: {
                 files: ['<%= config.styles %>/**/*.scss'],
                 tasks: ['styles']
+            },
+            
+            /**
+             * Any changes to JS files should trigger compilation of JS.
+             */
+            js: {
+                files: ['<%= config.js %>/index.js','<%= config.js %>/*/**/*.js'],
+                tasks: ['js']
             }
         }
     });
@@ -137,5 +145,5 @@ module.exports = function(grunt) {
     /**
      * Default task should be run while developing on the theme.
      */
-    grunt.registerTask('default', ['styles', 'watch']);
+    grunt.registerTask('default', ['styles', 'js', 'watch']);
 };
