@@ -49,7 +49,11 @@ module.exports = function(grunt) {
          */
         browserify: {
             options: {
-                
+                browserifyOptions: {
+                    paths: [
+                        './Scripts/src'
+                    ]
+                }
             },
             dist: {
                 files: { '<%= config.js %>/core.js': ['<%= config.js %>/index.js'] }

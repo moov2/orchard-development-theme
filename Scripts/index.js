@@ -7,4 +7,4 @@
  * for JavaScript code.
  */
 
-require('./src/app').initialise();
+require('app').initialise();
