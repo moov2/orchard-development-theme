@@ -74,6 +74,23 @@ module.exports = function(grunt) {
                 files: { '<%= config.js %>/tests/tests.js': ['<%= config.js %>/tests/suite.js'] }
             }
         },
+
+        /**
+         * Analyses JavaScript files using JSHint for errors or potential problems.
+         * You can customise the parameters by modifying the .jshintrc file.
+         * http://jshint.com/
+         */
+        jshint: {
+            all: [
+                'gruntfile.js',
+                '<%= config.js %>/**/*.js',
+                '!<%= config.js %>/core.js',
+                '!<%= config.js %>/tests/tests.js'
+            ],
+            options: {
+                jshintrc: true
+            }
+        },
         
         /**
          * Runs the JavaScript test suite using mocha.
@@ -168,7 +185,7 @@ module.exports = function(grunt) {
      * and linting.
      * `grunt js`
      */
-    grunt.registerTask('js', ['browserify', 'mocha']);
+    grunt.registerTask('js', ['jshint', 'browserify', 'mocha']);
     
     /**
      * Compiles Sass to CSS and then uses postcss to optimise and add vendor
