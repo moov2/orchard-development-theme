@@ -45,6 +45,53 @@ module.exports = function(grunt) {
          */
         
         /**
+         * Deletes previous build arefacts
+         */
+        clean: {
+            dist: ['<%= config.dist %>']
+        },
+        
+        /**
+         * Tidies things up by removing empty directories from the distributable
+         * directory.
+         */
+        cleanempty: {
+            options: { files: false },
+            src: ['<%= config.dist %>/**/*']
+        },
+        
+        /**
+         * Copies files.
+         */
+        copy: {
+            
+            /**
+             * Copies files appropriate for a release version into the 
+             * distributable directory.
+             */
+            dist: {
+                files: [{   
+                    expand: true,
+                    src: [
+                        '**', 
+                        '!bower_components/**', 
+                        '!node_modules/**',
+                        '!Scripts/tests/**',  
+                        '!package.json', 
+                        '!bower.json',
+                        '!gruntfile.js', 
+                        '!*.cmd', 
+                        '!README.md', 
+                        '!**/*.scss', 
+                        '!**/*.js'
+                    ], 
+                    dest: '<%= config.dist %>' }
+                ]
+            }
+        },
+
+        
+        /**
          * Compiles JS modules into a single file using browserify.
          * http://browserify.org/
          * https://github.com/jmreidy/grunt-browserify
@@ -60,18 +107,13 @@ module.exports = function(grunt) {
             },
             
             /**
-             * Compiles application modules into a single file.
+             * Compiles top level app & test modules into single file.
              */
-            app: {
-                files: { '<%= config.js %>/core.js': ['<%= config.js %>/index.js'] }
-            },
-            
-            /**
-             * Compiles test suite into a single file to be ran by the `mocha`
-             * task.
-             */
-            test: {
-                files: { '<%= config.js %>/tests/tests.js': ['<%= config.js %>/tests/suite.js'] }
+            dev: {
+                files: [
+                    { '<%= config.js %>/core.js': ['<%= config.js %>/index.js'] },
+                    { '<%= config.js %>/tests/tests.js': ['<%= config.js %>/tests/suite.js'] }
+                ]
             }
         },
 
@@ -103,6 +145,17 @@ module.exports = function(grunt) {
                 options: {
                     run: true
                 }
+            }
+        },
+        
+        /**
+         * Compresses JavaScript to reduce the file size.
+         * https://github.com/mishoo/UglifyJS
+         * https://github.com/gruntjs/grunt-contrib-uglify
+         */
+        uglify: {
+            dist: {
+                files: { '<%= config.dist %>/Scripts/core.js': ['<%= config.js %>/core.js'] }
             }
         },
         
@@ -186,6 +239,7 @@ module.exports = function(grunt) {
      * `grunt js`
      */
     grunt.registerTask('js', ['jshint', 'browserify', 'mocha']);
+    grunt.registerTask('js:dist', ['jshint', 'browserify', 'mocha', 'uglify']);
     
     /**
      * Compiles Sass to CSS and then uses postcss to optimise and add vendor
@@ -194,6 +248,12 @@ module.exports = function(grunt) {
      */
     grunt.registerTask('styles', ['sass:dev', 'postcss:dev']);
     grunt.registerTask('styles:dist', ['sass:dist', 'postcss:dist']);
+    
+    /**
+     * Creates a distributable version of the theme, placing artefacts in the
+     * configured distributable directory.
+     */
+    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'styles:dist', 'js:dist', 'cleanempty']);
 
     /**
      * Default task should be run while developing on the theme.
