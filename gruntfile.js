@@ -71,7 +71,7 @@ module.exports = function(grunt) {
              * task.
              */
             test: {
-                files: { '<%= config.js %>/tests/suite.compiled.js': ['<%= config.js %>/tests/suite.js'] }
+                files: { '<%= config.js %>/tests/tests.js': ['<%= config.js %>/tests/suite.js'] }
             }
         },
         

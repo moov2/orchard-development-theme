@@ -9,4 +9,4 @@ bower_components/
 
 # artefact from browserify by running `grunt js`.
 core.js
-suite.compiled.js
+tests.js
