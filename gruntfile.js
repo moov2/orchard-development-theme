@@ -45,6 +45,18 @@ module.exports = function(grunt) {
          */
         
         /**
+         * Compiles JS modules into a single file.
+         */
+        browserify: {
+            options: {
+                
+            },
+            dist: {
+                files: { '<%= config.js %>/core.js': ['<%= config.js %>/app.js'] }
+            }
+        },
+        
+        /**
          * Performs tasks (e.g. optimisation) to CSS file compiled by CSS.
          */
         postcss: {
@@ -105,6 +117,14 @@ module.exports = function(grunt) {
      * via the `grunt` command.
      * ------
      */
+    
+    
+    /**
+     * Handles JavaScript related build tasks such as concatenation, compression
+     * and linting.
+     * `grunt js`
+     */
+    grunt.registerTask('js', ['browserify']);
     
     /**
      * Compiles Sass to CSS and then uses postcss to optimise and add vendor

@@ -4,5 +4,8 @@ node_modules/
 # obtain Bower dependencies by running `bower install` command.
 bower_components/
 
-# CSS files are compiled using Sass.
+# CSS files are compiled using Sass by running `grunt styles`.
 *.css
+
+# artefact from browserify by running `grunt js`.
+core.js
