@@ -3,10 +3,26 @@
  * Welcome to the Sass stylesheet, play nice!
  * -----------------------------------------------------------------------------
  */
- 
+
+@import "vars";
+
+/**
+ * Mixins used through out the stylesheet.
+ * Learn more about mixins: http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins
+ */
+
+@import "mixins/rem";
+
 /**
  * Using normalize.css to make all browsers render default elements consistently.
  * http://necolas.github.io/normalize.css/
  */
 
 @import "../bower_components/normalize-css/normalize"; 
+
+/**
+ * Styles for the base HTML elements, e.g. body, ul, etc...
+ */
+
+@import "base/html";
+@import "base/body";

@@ -1,0 +1,14 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $BODY
+ * Styles for the `body` element.
+ * -----------------------------------------------------------------------------
+ */
+
+/**
+ * 1. Sets the default font size back to 16px (unless $font-size-default) has
+ *    changed value.
+ */
+body {
+    @include rem(font-size, $font-size-default); /* 1 */
+}
