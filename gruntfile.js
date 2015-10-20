@@ -45,23 +45,53 @@ module.exports = function(grunt) {
          */
         
         /**
-         * Compiles JS modules into a single file.
+         * Compiles JS modules into a single file using browserify.
+         * http://browserify.org/
+         * https://github.com/jmreidy/grunt-browserify
          */
         browserify: {
             options: {
                 browserifyOptions: {
                     paths: [
-                        './Scripts/src'
+                        './Scripts/src', 
+                        './Scripts/tests/src'
                     ]
                 }
             },
-            dist: {
+            
+            /**
+             * Compiles application modules into a single file.
+             */
+            app: {
                 files: { '<%= config.js %>/core.js': ['<%= config.js %>/index.js'] }
+            },
+            
+            /**
+             * Compiles test suite into a single file to be ran by the `mocha`
+             * task.
+             */
+            test: {
+                files: { '<%= config.js %>/tests/suite.compiled.js': ['<%= config.js %>/tests/suite.js'] }
+            }
+        },
+        
+        /**
+         * Runs the JavaScript test suite using mocha.
+         * https://mochajs.org/
+         * https://github.com/kmiyashiro/grunt-mocha
+         */
+        mocha: {
+            all: {
+                src: ['<%= config.js %>/tests/*.html'],
+                options: {
+                    run: true
+                }
             }
         },
         
         /**
          * Performs tasks (e.g. optimisation) to CSS file compiled by CSS.
+         * https://github.com/postcss/postcss
          */
         postcss: {
             options: {
@@ -73,6 +103,8 @@ module.exports = function(grunt) {
         
         /**
          * Handles compiling Sass to CSS.
+         * http://sass-lang.com/
+         * https://github.com/sindresorhus/grunt-sass
          */
         sass: {
             options: {
@@ -136,7 +168,7 @@ module.exports = function(grunt) {
      * and linting.
      * `grunt js`
      */
-    grunt.registerTask('js', ['browserify']);
+    grunt.registerTask('js', ['browserify', 'mocha']);
     
     /**
      * Compiles Sass to CSS and then uses postcss to optimise and add vendor

@@ -5,11 +5,14 @@
   "author": "Moov2",
   "devDependencies": {
     "autoprefixer": "^6.0.3",
+    "chai": "3.3.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "4.0.1",
     "grunt-contrib-watch": "0.6.1",
+    "grunt-mocha": "0.4.13",
     "grunt-postcss": "^0.6.0",
     "grunt-sass": "^1.0.0",
-    "load-grunt-tasks": "^3.3.0"
+    "load-grunt-tasks": "^3.3.0",
+    "mocha": "2.3.3"
   }
 }
