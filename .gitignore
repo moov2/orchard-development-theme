@@ -1,9 +1,6 @@
 # obtain Node dependencies by running `npm install` command.
 node_modules/
 
-# obtain Bower dependencies by running `bower install` command.
-bower_components/
-
 # CSS files are compiled using Sass by running `grunt styles`.
 *.css
 

@@ -74,11 +74,9 @@ module.exports = function(grunt) {
                     expand: true,
                     src: [
                         '**', 
-                        '!bower_components/**', 
                         '!node_modules/**',
                         '!Scripts/tests/**',  
                         '!package.json', 
-                        '!bower.json',
                         '!gruntfile.js', 
                         '!*.cmd', 
                         '!README.md', 

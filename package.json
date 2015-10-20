@@ -18,10 +18,11 @@
     "grunt-postcss": "0.6.0",
     "grunt-sass": "1.0.0",
     "load-grunt-tasks": "3.3.0",
-    "mocha": "2.3.3"
+    "mocha": "2.3.3",
+    "normalize.css": "3.0.3"
   },
   "scripts": {
-    "dist": "npm install & bower install & grunt dist",
-    "develop": "npm install & bower install & grunt"
+    "dist": "npm install & grunt dist",
+    "develop": "npm install & grunt"
   }
 }

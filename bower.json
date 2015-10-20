@@ -1,8 +1,0 @@
-{
-  "name": "YourThemeName",
-  "description": "This project offers a useful starting point development of a theme for [Orchard](http://www.orchardproject.net/).",
-  "version": "1.0.0",
-  "dependencies": {
-    "normalize-css": "normalize.css#~3.0.3"
-  }
-}
