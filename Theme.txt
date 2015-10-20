@@ -3,5 +3,6 @@ Author: Moov2
 Website: http://moov2.com
 Description: Description of your theme.
 Version: 1.0
+Zones: Header, Content, Footer
 # todo: provide tags
 # Tags: Classic, Serif

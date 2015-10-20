@@ -1,0 +1,25 @@
+@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@{
+    string title = Convert.ToString(Model.Title);
+    string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+    IHtmlString cssClasses = @Html.ClassForPage();
+}
+<!DOCTYPE html>
+<html lang="@WorkContext.CurrentCulture" class="no-js @cssClasses">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
+
+        <title>@Html.Title(title, siteName)</title>
+
+        @Display(Model.Head)
+
+        <link rel="stylesheet" type="text/css" href="@Url.Content(Html.ThemePath(WorkContext.CurrentTheme, "/Styles/Site.css"))">
+    </head>
+    <body>
+        @Display(Model.Body)
+
+        @Display(Model.Tail)
+    </body>
+</html>
