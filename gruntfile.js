@@ -84,15 +84,12 @@ module.exports = function(grunt) {
                 files: [{   
                     expand: true,
                     src: [
-                        '**', 
-                        '!node_modules/**',
-                        '!Scripts/tests/**',  
-                        '!package.json', 
-                        '!gruntfile.js', 
-                        '!*.cmd', 
-                        '!README.md', 
-                        '!**/*.scss', 
-                        '!**/*.js'
+                        './Placement.info',
+                        './Theme.png', 
+                        './Theme.txt',
+                        './Web.config',
+                        './Views/**/*',
+                        './Content/**/*'
                     ], 
                     dest: '<%= config.dist %>' }
                 ]
