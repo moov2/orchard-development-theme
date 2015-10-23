@@ -87,7 +87,8 @@ module.exports = function(grunt) {
                         './Placement.info',
                         './Theme.png', 
                         './Theme.txt',
-                        './Web.config',
+                        './Scripts/Web.config',
+                        './Styles/Web.config',
                         './Views/**/*',
                         './Content/**/*'
                     ], 
