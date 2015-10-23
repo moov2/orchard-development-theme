@@ -28,7 +28,19 @@ module.exports = function(grunt) {
          * Unique randomly generated string used to bust caching of CSS & 
          * JavaScript assets.
          */
-        hash: ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString())
+        hash: ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()),
+        
+        /**
+         * Parameters used to upload asstes to blob storage and convert the theme
+         * to utilise the CDN assets.
+         */
+        cdn: {
+            url: grunt.option('cdnUrl'),
+            container: grunt.option('container'),
+            accountName: grunt.option('accountName'),
+            accountKey: grunt.option('accountKey'),
+            cache: 'public, max-age=31530000'
+        }
     };
     
     /**
@@ -54,7 +66,30 @@ module.exports = function(grunt) {
          * Build tasks.
          * ------
          */
-        
+
+        /**
+         * Uploads theme assets (images, styles & scripts) to the CDN.
+         */
+        'azure-cdn-deploy': {
+            theme: {
+                options: {
+                    containerName: '<%= config.cdn.container %>',
+                    serviceOptions: ['<%= config.cdn.accountName %>', '<%= config.cdn.accountKey %>'],
+                    deleteExistingBlobs: false,
+                    metadata: {
+                        cacheControl: '<%= config.cdn.cache %>',
+                        cacheControlHeader: '<%= config.cdn.cache %>'
+                    }
+                },
+                src: [
+                    '**/Content/*.{png,jpg}',
+                    '**/Styles/*.css',
+                    '**/Scripts/**/*.js'
+                ],
+                cwd: '<%= config.dist %>'
+            }
+        }, 
+      
         /**
          * Deletes previous build arefacts
          */
@@ -229,6 +264,26 @@ module.exports = function(grunt) {
                         replacement: 'core-<%= config.hash %>.js'
                     }]
                 }
+            },
+            
+            /**
+             * Updates the theme files to point to assets that have been uploaded to 
+             * a CDN.
+             */
+            cdn: {
+                files: {
+                    '<%= config.dist %>/Views/Document.cshtml': '<%= config.dist %>/Views/Document.cshtml',
+                    '<%= config.dist %>/Styles/Site-<%= config.hash %>.css': '<%= config.dist %>/Styles/Site-<%= config.hash %>.css'
+                },
+                options: {
+                    replacements: [{
+                        pattern: 'string themePath = WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Id;',
+                        replacement: 'string themePath = <%= config.cdn.url %>;'
+                    },{
+                        pattern: '../Content/',
+                        replacement: '<%= config.cdn.url %>/<%=config.cdn.container %>/Content/'
+                    }]
+                }               
             }
         },
         
@@ -263,6 +318,25 @@ module.exports = function(grunt) {
      * ------
      */
     
+    /**
+     * Uploads theme assets (CSS, JavaScript & Images) to Azure blob storage.
+     */
+    grunt.registerTask('upload-to-cdn', function () {
+        /**
+         * Task requires various options to assist with uploading assets to 
+         * blob storage and updating theme files to point at assets stored 
+         * in the CDN.
+         */
+        if (!grunt.option('cdnUrl') || !grunt.option('container') || !grunt.option('accountName') || !grunt.option('accountKey')) {
+            return;
+        }
+        
+        // upload assets to blob storage.
+        grunt.task.run('azure-cdn-deploy');
+        
+        // update theme files to point to CDN assets.
+        grunt.task.run('string-replace:cdn');
+    });
     
     /**
      * Handles JavaScript related build tasks such as concatenation, compression
@@ -284,7 +358,7 @@ module.exports = function(grunt) {
      * Creates a distributable version of the theme, placing artefacts in the
      * configured distributable directory.
      */
-    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'styles:dist', 'js:dist', 'string-replace:cacheBust', 'cleanempty']);
+    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'styles:dist', 'js:dist', 'string-replace:cacheBust', 'cleanempty', 'upload-to-cdn']);
 
     /**
      * Default task should be run while developing on the theme.
