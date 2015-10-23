@@ -17,6 +17,7 @@
     "grunt-mocha": "0.4.13",
     "grunt-postcss": "0.6.0",
     "grunt-sass": "1.0.0",
+    "grunt-string-replace": "1.2.0",
     "load-grunt-tasks": "3.3.0",
     "mocha": "2.3.3",
     "normalize.css": "3.0.3"

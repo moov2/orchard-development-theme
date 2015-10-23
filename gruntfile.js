@@ -5,19 +5,30 @@ module.exports = function(grunt) {
      */
     var config = {
         /**
-            * Directory that contains the CSS.
-            */
+         * Directory containing CSS.
+         */
         styles: './Styles',
 
         /**
-            * Directory that contains the JavaScript.
-            */
+         * Directory containing JavaScript.
+         */
         js: './Scripts',
         
         /**
-            * Theme artifacts from the build process will be placed in this directory.
-            */
-        dist: './dist'
+         * Directory containing Razor views.
+         */
+        views: './Views',
+        
+        /**
+         * Theme artifacts from the build process will be placed in this directory.
+         */
+        dist: './dist',
+        
+        /**
+         * Unique randomly generated string used to bust caching of CSS & 
+         * JavaScript assets.
+         */
+        hash: ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString())
     };
     
     /**
@@ -153,7 +164,7 @@ module.exports = function(grunt) {
          */
         uglify: {
             dist: {
-                files: { '<%= config.dist %>/Scripts/core.js': ['<%= config.js %>/core.js'] }
+                files: { '<%= config.dist %>/Scripts/core-<%= config.hash %>.js': ['<%= config.js %>/core.js'] }
             }
         },
         
@@ -194,7 +205,31 @@ module.exports = function(grunt) {
             dist: {
                 options: { outputStyle: 'compressed' },
                 files: {
-                    '<%= config.dist %>/Styles/Site.css': '<%= config.styles %>/Site.scss'
+                    '<%= config.dist %>/Styles/Site-<%= config.hash %>.css': '<%= config.styles %>/Site.scss'
+                }
+            }
+        },
+        
+        /**
+         * Updates file contents.
+         */
+        'string-replace': {
+            /**
+             * Updates the main document HTML to point CSS & JS references to the
+             * cache busted versions.
+             */
+            cacheBust: {
+                files: {
+                    '<%= config.dist %>/': '<%= config.views %>/Document.cshtml'
+                },
+                options: {
+                    replacements: [{
+                        pattern: 'Site.css',
+                        replacement: 'Site-<%= config.hash %>.css'
+                    }, {
+                        pattern: 'core.js',
+                        replacement: 'core-<%= config.hash %>.js'
+                    }]
                 }
             }
         },
@@ -251,7 +286,7 @@ module.exports = function(grunt) {
      * Creates a distributable version of the theme, placing artefacts in the
      * configured distributable directory.
      */
-    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'styles:dist', 'js:dist', 'cleanempty']);
+    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'styles:dist', 'js:dist', 'string-replace:cacheBust', 'cleanempty']);
 
     /**
      * Default task should be run while developing on the theme.
