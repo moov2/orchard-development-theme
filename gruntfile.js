@@ -278,7 +278,7 @@ module.exports = function(grunt) {
                 options: {
                     replacements: [{
                         pattern: 'string themePath = WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Id;',
-                        replacement: 'string themePath = <%= config.cdn.url %>;'
+                        replacement: 'string themePath = "<%= config.cdn.url %>/<%= config.cdn.container %>";'
                     },{
                         pattern: '../Content/',
                         replacement: '<%= config.cdn.url %>/<%=config.cdn.container %>/Content/'
