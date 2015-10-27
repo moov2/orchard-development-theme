@@ -16,6 +16,8 @@
         <title>@Html.Title(title, siteName)</title>
 
         @Display(Model.Head)
+        
+        <link rel="icon" href="@Url.Content(themePath + "/Content/favicon.ico")">
 
         <link rel="stylesheet" type="text/css" href="@Url.Content(themePath + "/Styles/Site.css")">
     </head>
