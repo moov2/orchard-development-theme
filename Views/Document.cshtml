@@ -20,12 +20,12 @@
         <link rel="icon" href="@Url.Content(themePath + "/Content/favicon.ico")">
 
         <link rel="stylesheet" type="text/css" href="@Url.Content(themePath + "/Styles/Site.css")">
+        
+        <script src="@Url.Content(themePath + "/Scripts/core.js")" async></script>
     </head>
     <body>
         @Display(Model.Body)
 
         @Display(Model.Tail)
-        
-        <script src="@Url.Content(themePath + "/Scripts/core.js")"></script>
     </body>
 </html>
