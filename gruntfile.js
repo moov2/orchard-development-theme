@@ -343,8 +343,8 @@ module.exports = function(grunt) {
      * and linting.
      * `grunt js`
      */
-    grunt.registerTask('js', ['jshint', 'browserify', 'mocha']);
-    grunt.registerTask('js:dist', ['jshint', 'browserify', 'mocha', 'uglify']);
+    grunt.registerTask('js', ['browserify', 'jshint', 'mocha']);
+    grunt.registerTask('js:dist', ['browserify', 'jshint', 'mocha', 'uglify']);
     
     /**
      * Compiles Sass to CSS and then uses postcss to optimise and add vendor
