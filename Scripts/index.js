@@ -7,4 +7,13 @@
  * for JavaScript code.
  */
 
-require('app').initialise();
+require('shoestring');
+
+var app = require('app')(),
+	browser = require('browser');
+
+/**
+ * Setup different layers of the application.
+ */
+
+app.addLayer(browser);

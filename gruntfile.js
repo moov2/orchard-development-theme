@@ -145,6 +145,9 @@ module.exports = function(grunt) {
                         './Scripts/src', 
                         './Scripts/tests/src'
                     ]
+                },
+                alias: {
+                    'shoestring': './node_modules/shoestring/dist/shoestring.js'
                 }
             },
             

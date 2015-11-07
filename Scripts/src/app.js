@@ -1,15 +1,24 @@
 "use strict";
 
 /**
- * Responsible for initialising modules that are used in the theme.
+ * Primary object that is executed at the entry point of the application
+ * JavaScript. This modules primary function is to house the different layers
+ * of the application.
  */
-function App() { }
 
-/**
- * Initialises the modules for the theme.
- */
-App.initialise = function () {
-	// entry point for the JavaScript.
-}; 
+var app = function () {
+	return {
+		/**
+		 * Adds new layer to application.
+		 */
+		addLayer: function (layer) {
+			if (!layer) {
+				return;
+			}
+			
+			layer();
+		}
+	};
+};
 
-module.exports = App;
+module.exports = app;
