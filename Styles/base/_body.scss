@@ -6,9 +6,12 @@
  */
 
 /**
- * 1. Sets the default font size back to 16px (unless $font-size-default) has
- *    changed value.
+ * 1. Sets the default font size back to 16px (unless $font-size-default has
+ *    changed value). This is the only time `em` should be used to define the 
+ *    font-size. This has to be `em` because of a bug in Chrome described in 
+ *    a link below.
+ *    https://code.google.com/p/chromium/issues/detail?id=320754
  */
 body {
-    @include rem(font-size, $font-size-default); /* 1 */
+    @include rem(font-size, $font-size-default-em); /* 1 */
 }
