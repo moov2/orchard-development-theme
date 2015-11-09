@@ -1,8 +1,11 @@
 /**
  * -----------------------------------------------------------------------------
  * $BODY
- * Styles for the `body` element.
  * -----------------------------------------------------------------------------
+ */
+ 
+/**
+ * Styles for `body` element.
  */
 
 /**
@@ -13,5 +16,5 @@
  *    https://code.google.com/p/chromium/issues/detail?id=320754
  */
 body {
-    @include rem(font-size, $font-size-default-em); /* 1 */
+    font-size: $font-size-default-em; /* 1 */
 }

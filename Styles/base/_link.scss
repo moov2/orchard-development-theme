@@ -1,0 +1,19 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $LINK
+ * -----------------------------------------------------------------------------
+ */
+ 
+/**
+ * Styles for the hyperlink elements.
+ */
+ 
+a {
+	font-weight: $font-weight-default;
+	text-decoration: none;
+	
+	&:active,
+	&:hover {
+		text-decoration: underline;
+	}
+}

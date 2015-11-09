@@ -1,12 +1,15 @@
 /**
  * -----------------------------------------------------------------------------
  * $REM
+ * -----------------------------------------------------------------------------
+ */
+ 
+/**
  * Useful mixin to assist with using REM units with a PX fallback.
  * Mixin is courtesy of Hugo Giraudel
  * http://hugogiraudel.com/2013/03/18/ultimate-rem-mixin/
  *
  * Example usage is `@include rem(font-size, 1.6rem);`
- * -----------------------------------------------------------------------------
  */
 
 @function parseInt($n) {

@@ -1,0 +1,18 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $MAIN
+ * -----------------------------------------------------------------------------
+ */
+ 
+/**
+ * Main wrapper around the whole content.
+ */
+ 
+.main {
+	@include rem(padding, $spacing-large $spacing-base);
+	
+	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $layout-width-max;
+}

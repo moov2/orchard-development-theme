@@ -12,8 +12,39 @@
 $url-images: '../Content/';
 
 /**
- * Variations on font size.
+ * Font settings.
+ */
+
+$font-family-default: "Source Sans Pro", sans-serif;
+
+$font-size-default-em: 1.6em;
+$font-size-default: 1.6rem;
+
+$font-size-heading: 3.6rem;
+
+$font-weight-light: 300;
+$font-weight-default: 400;
+$font-weight-bold: 700;
+
+/**
+ * Spacing settings
+ */
+
+$spacing-base: 1rem;
+$spacing-large: 3rem;
+
+/**
+ * Layout settings.
  */
  
-$font-size-default: 1.6rem;
-$font-size-default-em: 1.6em;
+$layout-width-max: 1200px;
+
+/**
+ * Text settings.
+ */
+ 
+/**
+ * Text settings.
+ */
+ 
+$text-line-height-default: 2rem;

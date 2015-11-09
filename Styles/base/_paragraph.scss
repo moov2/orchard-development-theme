@@ -1,0 +1,21 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $PARAGRAPH
+ * -----------------------------------------------------------------------------
+ */
+ 
+/**
+ * Styles for `p` elements.
+ */
+ 
+p {
+	@include rem(line-height, $text-line-height-default);
+	@include rem(margin-bottom, $spacing-base);
+	
+	display: block;
+	margin-top: 0;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}

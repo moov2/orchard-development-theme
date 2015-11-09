@@ -11,6 +11,7 @@
  * Learn more about mixins: http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins
  */
 
+@import "mixins/clearfix";
 @import "mixins/rem";
 
 /**
@@ -26,3 +27,18 @@
 
 @import "base/html";
 @import "base/body";
+@import "base/fieldset";
+@import "base/heading";
+@import "base/image";
+@import "base/input";
+@import "base/legend";
+@import "base/link";
+@import "base/paragraph";
+@import "base/svg";
+
+/**
+ * Styles to assist with layout.
+ */
+
+@import "layout/list"; 
+@import "layout/main";
