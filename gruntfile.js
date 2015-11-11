@@ -82,7 +82,7 @@ module.exports = function(grunt) {
                     }
                 },
                 src: [
-                    '**/Content/*.{png,jpg,jpeg,ico}',
+                    '**/Content/*.{png,jpg,jpeg,ico,svg}',
                     '**/Styles/*.css',
                     '**/Scripts/**/*.js'
                 ],
