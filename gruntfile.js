@@ -156,7 +156,7 @@ module.exports = function(grunt) {
              */
             dev: {
                 files: [
-                    { '<%= config.js %>/core.js': ['<%= config.js %>/index.js'] },
+                    { '<%= config.js %>/bundle.js': ['<%= config.js %>/index.js'] },
                     { '<%= config.js %>/tests/tests.js': ['<%= config.js %>/tests/suite.js'] }
                 ]
             }
@@ -171,7 +171,7 @@ module.exports = function(grunt) {
             all: [
                 'gruntfile.js',
                 '<%= config.js %>/**/*.js',
-                '!<%= config.js %>/core.js',
+                '!<%= config.js %>/bundle.js',
                 '!<%= config.js %>/tests/tests.js'
             ],
             options: {
@@ -200,7 +200,7 @@ module.exports = function(grunt) {
          */
         uglify: {
             dist: {
-                files: { '<%= config.dist %>/Scripts/core-<%= config.hash %>.js': ['<%= config.js %>/core.js'] }
+                files: { '<%= config.dist %>/Scripts/bundle-<%= config.hash %>.js': ['<%= config.js %>/bundle.js'] }
             }
         },
         
@@ -263,8 +263,8 @@ module.exports = function(grunt) {
                         pattern: 'Site.css',
                         replacement: 'Site-<%= config.hash %>.css'
                     }, {
-                        pattern: 'core.js',
-                        replacement: 'core-<%= config.hash %>.js'
+                        pattern: 'bundle.js',
+                        replacement: 'bundle-<%= config.hash %>.js'
                     }]
                 }
             },

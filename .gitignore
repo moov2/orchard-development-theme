@@ -5,7 +5,7 @@ node_modules/
 *.css
 
 # artefact from browserify by running `grunt js`.
-core.js
+bundle.js
 tests.js
 
 # directory will contain distributable version of the theme, which can
