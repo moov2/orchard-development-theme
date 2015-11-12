@@ -80,7 +80,7 @@ To serve assets from a CDN they have to first be uploaded to the CDN and then al
 
 	grunt dist -cdnUrl=http://az123456.vo.msecnd.net -container=theme -accountName=myAzureAccount -accountKey=cys6fvLEyk2VdUDb7P+WIyvmpv4XQ8SnpCn2PgZH0gg==
 
-*Tip: Instead of having to remember the command above, add the command to the *`scripts` *object in *`package.json`*, example below.*
+*Tip: Instead of having to remember the command above, add the command to the `scripts` object in `package.json`, example below.*
 
 	"scripts": {
 	    "dist": "npm install & grunt dist",
@@ -88,4 +88,4 @@ To serve assets from a CDN they have to first be uploaded to the CDN and then al
 	    "prod": "npm install && grunt dist -cdnUrl=http://az123456.vo.msecnd.net -container=theme -accountName=myAzureAccount -accountKey=cys6fvLEyk2VdUDb7P+WIyvmpv4XQ8SnpCn2PgZH0gg=="
     }
   
- *Running* `npm run prod` *will create a distributable version of the theme whose assets are served from a CDN.*
+ *Running `npm run prod` will create a distributable version of the theme whose assets are served from a CDN.*
