@@ -21,7 +21,9 @@
     "grunt-string-replace": "1.2.0",
     "load-grunt-tasks": "3.3.0",
     "mocha": "2.3.3",
-    "normalize.css": "3.0.3"
+    "normalize.css": "3.0.3",
+    "shoestring": "1.0.3",
+    "sinon": "1.17.2"
   },
   "scripts": {
     "dist": "npm install & grunt dist",
