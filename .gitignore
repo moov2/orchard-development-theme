@@ -12,3 +12,6 @@ tests.js
 # directory will contain distributable version of the theme, which can
 # be created by running `grunt dist`.
 dist/
+
+# Ignore MAC OS related
+.DS_Store
