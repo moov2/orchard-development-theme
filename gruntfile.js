@@ -205,48 +205,6 @@ module.exports = function(grunt) {
         },
         
         /**
-         * Performs tasks (e.g. optimisation) to CSS file compiled by CSS.
-         * https://github.com/postcss/postcss
-         */
-        postcss: {
-            options: {
-                processors: [require('autoprefixer')({browsers: 'last 1 version'})]
-            },
-            dev: { src: '<%= config.styles %>/*.css' },
-            dist: { src: '<%= config.dist %>/Styles/*.css' }
-        },
-        
-        /**
-         * Handles compiling Sass to CSS.
-         * http://sass-lang.com/
-         * https://github.com/sindresorhus/grunt-sass
-         */
-        sass: {
-            options: {
-                sourceMap: false
-            },
-
-            /**
-             * Development version will be uncompressed.
-             */
-            dev: {
-                files: {
-                    '<%= config.styles %>/Site.css': '<%= config.styles %>/Site.scss'
-                }
-            },
-
-            /**
-             * Distributable version will be compressed.
-             */
-            dist: {
-                options: { outputStyle: 'compressed' },
-                files: {
-                    '<%= config.dist %>/Styles/Site-<%= config.hash %>.css': '<%= config.styles %>/Site.scss'
-                }
-            }
-        },
-        
-        /**
          * Updates file contents.
          */
         'string-replace': {
@@ -349,13 +307,6 @@ module.exports = function(grunt) {
     grunt.registerTask('js', ['browserify', 'jshint', 'mocha']);
     grunt.registerTask('js:dist', ['browserify', 'jshint', 'mocha', 'uglify']);
     
-    /**
-     * Compiles Sass to CSS and then uses postcss to optimise and add vendor
-     * prefixes.
-     * `grunt styles`
-     */
-    grunt.registerTask('styles', ['sass:dev', 'postcss:dev']);
-    grunt.registerTask('styles:dist', ['sass:dist', 'postcss:dist']);
     
     /**
      * Creates a distributable version of the theme, placing artefacts in the
