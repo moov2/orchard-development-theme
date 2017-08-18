@@ -8,6 +8,7 @@ module.exports = {
         path: __dirname + '/Scripts',
         filename: 'bundle.js'
     },
+    watch: true,
 	module: {
 		loaders: [
 			{
