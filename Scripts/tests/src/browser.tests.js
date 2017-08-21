@@ -1,5 +1,7 @@
 "use strict";
 
+import chai, { expect } from 'chai';
+
 var assert = require('chai').assert,
 	sinon = require('sinon');
 

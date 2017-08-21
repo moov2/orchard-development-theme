@@ -5,28 +5,30 @@
   "author": "Moov2",
   "devDependencies": {
     "autoprefixer": "6.0.3",
-    "chai": "3.3.0",
-    "grunt": "0.4.5",
-    "grunt-azure-cdn-deploy": "^1.0.1",
-    "webpack": "3.5.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
+    "chai": "^3.3.0",
+    "grunt": "0.4.5",
+    "grunt-azure-cdn-deploy": "^1.0.1",
     "grunt-cleanempty": "1.0.3",
     "grunt-contrib-clean": "0.6.0",
     "grunt-contrib-copy": "0.8.2",
     "grunt-contrib-uglify": "0.9.2",
     "grunt-contrib-watch": "0.6.1",
-    "grunt-mocha": "0.4.13",
-    "jshint-loader": "0.8.4",
-    "postcss-cli": "^4.1.0",
-    "node-sass": "^4.5.3",
-    "hashmark": "^5.0.0",
     "grunt-string-replace": "1.2.0",
+    "hashmark": "^5.0.0",
+    "jshint-loader": "0.8.4",
     "load-grunt-tasks": "3.3.0",
-    "mocha": "2.3.3",
+    "mocha": "^2.5.3",
+    "mocha-loader": "^1.1.1",
+    "mocha-webpack": "^1.0.0-rc.1",
+    "node-sass": "^4.5.3",
     "normalize.css": "3.0.3",
+    "postcss-cli": "^4.1.0",
     "shoestring": "1.0.3",
-    "sinon": "1.17.2"
+    "sinon": "1.17.2",
+    "webpack": "^3.5.5",
+    "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
     "sass:dev": "node-sass --output-style expanded ./Styles/Site.scss ./Styles/Site.css",
@@ -36,9 +38,7 @@
     "postcss:dist": "postcss -u autoprefixer --autoprefixer.browsers 'last 1 versions' -r ./dist/Styles/Site.css",
     "js:webpack": "webpack",
     "dist": "npm install && npm run sass:dist && npm run postcss:dist && npm run css:hashmark",
-    "develop": "npm install && npm run sass:dev && npm run postcss:dev"
-  },
-  "dependencies": {
-    "jshint-loader": "^0.8.4"
+    "develop": "npm install && npm run sass:dev && npm run postcss:dev && npm run js:webpack",
+    "test:mocha": "mocha-webpack --webpack-config webpack.config-test.js \"./Scripts/tests/suite.tests.js\""
   }
 }

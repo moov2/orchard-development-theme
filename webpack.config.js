@@ -1,6 +1,4 @@
-"use strict";
-
-const webpack = require('webpack');
+'use strict';
 
 module.exports = {
 	entry: './Scripts/index.js',
@@ -8,21 +6,20 @@ module.exports = {
         path: __dirname + '/Scripts',
         filename: 'bundle.js'
     },
-    watch: true,
 	module: {
 		loaders: [
 			{
-				test: /\.js$/,
+				test: /.*\.js$/,
 				exclude: /(node_modules)/,
 				loaders: ['babel-loader']
 			}
 		],
 		rules: [{
             test: /\.js$/, // include .js files
-            enforce: "pre", // preload jshint loader (must be used as a preloader aka before all other loaders.)
-            exclude: /node_modules/, // exclude any and all files in the node_modules folder
+            enforce: 'pre', // preload jshint loader (must be used as a preloader aka before all other loaders.)
+            exclude: /(node_modules)/, // exclude any and all files in the node_modules folder
             use: [{
-				loader: "jshint-loader",
+				loader: 'jshint-loader',
             	options: {
                     // any jshint option http://www.jshint.com/docs/options/
                     // i. e.
@@ -40,8 +37,8 @@ module.exports = {
 	},
     resolve: {
     	modules: [
-    		"./Scripts/src", 
-    		"./node_modules/shoestring/dist/"
+    		'./Scripts/src',
+    		'./node_modules/shoestring/dist'
     	]
     }
  };
