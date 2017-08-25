@@ -1,10 +1,8 @@
-"use strict";
-
-var assert = require('chai').assert;
+import { assert } from 'chai';
+import setClasses from 'browser/set-classes';
 
 suite('setClasses', function() {
-	var setClasses = require('browser/set-classes'),
-		$html = document.querySelector('html');
+	var $html = document.querySelector('html');
 	
 	setup(function () {
 		// remove any CSS classes from root node.

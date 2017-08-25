@@ -1,6 +1,4 @@
-"use strict";
+import 'app.tests';
 
-require('app.tests');
-
-require('browser.tests');
-require('browser/set-classes.tests');
+import 'browser.tests';
+import 'browser/set-classes.tests';

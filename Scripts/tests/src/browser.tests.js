@@ -1,13 +1,8 @@
-"use strict";
-
-import chai, { expect } from 'chai';
-
-var assert = require('chai').assert,
-	sinon = require('sinon');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import browser from 'browser';
 
 suite('Browser', function() {
-	var browser = require('browser');
-	
 	test('should call provided enhancements', function () {
 		var spies = [sinon.spy(), sinon.spy(), sinon.spy()];
 		browser(spies);

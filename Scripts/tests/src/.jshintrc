@@ -15,5 +15,6 @@
     "expr": true,
     "devel": false,
     "mocha": true,
-    "browserify": true
+    "browserify": true,
+    "esversion": 6
 }
