@@ -30,6 +30,7 @@
     "normalize.css": "3.0.3",
     "postcss-cli": "^4.1.0",
     "sinon": "^3.2.1",
+    "standard": "^10.0.3",
     "webpack": "^3.5.5",
     "webpack-node-externals": "^1.6.0"
   },
@@ -42,6 +43,19 @@
     "js:bundle": "webpack",
     "dist": "npm install && npm run sass:dist && npm run postcss:dist && npm run css:hashmark",
     "develop": "npm install && npm run sass:dev && npm run postcss:dev && npm run js:webpack",
-    "test": "npm run js:bundle && karma start karma.conf.js"
+    "test": "npm run js:bundle && karma start karma.conf.js",
+    "lint": "standard"
+  },
+  "standard": {
+    "ignore": [
+      "gruntfile.js"
+    ],
+    "globals": [ 
+      "suite", 
+      "test",
+      "assert",
+      "sinon",
+      "setup"
+    ]
   }
 }

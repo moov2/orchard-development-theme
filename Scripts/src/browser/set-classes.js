@@ -4,7 +4,7 @@
  */
 
 export default function () {
-	let $html = document.querySelector('html');
-	$html.classList.remove('no-js');
-	$html.classList.add('js');
+  let $html = document.querySelector('html')
+  $html.classList.remove('no-js')
+  $html.classList.add('js')
 }

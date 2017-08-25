@@ -5,16 +5,16 @@
  */
 
 export default function () {
-	return {
-		/**
-		 * Adds new layer to application.
-		 */
-		addLayer: function (layer) {
-			if (!layer) {
-				return;
-			}
-			
-			layer();
-		}
-	};
+  return {
+    /**
+     * Adds new layer to application.
+     */
+    addLayer: function (layer) {
+      if (!layer) {
+        return
+      }
+
+      layer()
+    }
+  }
 }
