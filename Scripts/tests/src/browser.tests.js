@@ -1,5 +1,3 @@
-import { assert } from 'chai';
-import sinon from 'sinon';
 import browser from 'browser';
 
 suite('Browser', function() {

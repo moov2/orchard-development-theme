@@ -7,7 +7,7 @@ npm-debug.log
 
 # artefact from browserify by running `grunt js`.
 bundle.js
-tests.js
+suite.bundle.js
 
 # directory will contain distributable version of the theme, which can
 # be created by running `grunt dist`.

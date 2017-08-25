@@ -1,5 +1,3 @@
-import { assert } from 'chai';
-import sinon from 'sinon';
 import app from 'app';
 
 suite('App', function() {

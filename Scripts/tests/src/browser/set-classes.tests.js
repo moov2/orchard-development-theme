@@ -1,4 +1,3 @@
-import { assert } from 'chai';
 import setClasses from 'browser/set-classes';
 
 suite('setClasses', function() {

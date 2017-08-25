@@ -9,10 +9,13 @@
 		<div id="mocha"></div>
 
 		<script src="../../node_modules/mocha/mocha.js"></script>
+		<script src="../../node_modules/chai/chai.js"></script>
+		<script src="../../node_modules/sinon/pkg/sinon.js"></script>
 		<script>
 			mocha.setup('tdd');
+			assert = chai.assert;
 		</script>
-		<script src="tests.js"></script>
+		<script src="suite.bundle.js"></script>
 		<script>
 		if (navigator.userAgent.indexOf('PhantomJS') < 0) {
         	mocha.run();
