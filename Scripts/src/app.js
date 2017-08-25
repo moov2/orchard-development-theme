@@ -1,12 +1,10 @@
-"use strict";
-
 /**
  * Primary object that is executed at the entry point of the application
  * JavaScript. This modules primary function is to house the different layers
  * of the application.
  */
 
-var app = function () {
+export default function () {
 	return {
 		/**
 		 * Adds new layer to application.
@@ -19,6 +17,4 @@ var app = function () {
 			layer();
 		}
 	};
-};
-
-module.exports = app;
+}

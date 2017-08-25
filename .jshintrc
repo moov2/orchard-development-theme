@@ -10,8 +10,8 @@
     "unused": true,
     "boss": true,
     "eqnull": true,
-    "es3": true,
     "browser": true,
     "devel": false,
-    "browserify": true
+    "browserify": true,
+    "esversion": 6
 }

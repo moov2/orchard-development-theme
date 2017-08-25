@@ -1,13 +1,11 @@
-"use strict";
-
 /**
  * Responsible for setting up polyfills and enhancements to browser
  * features.
  */
 
-var setClasses = require('browser/set-classes');
+import setClasses from 'browser/set-classes';
 	
-var browser = function browser(enhancements) {
+export default function (enhancements) {
 	// if no enhancements are provided, use modules referenced via require.
 	if (!enhancements) {
 		enhancements = [setClasses];
@@ -17,6 +15,4 @@ var browser = function browser(enhancements) {
 	for (var i = 0; i < enhancements.length; i++) {
 		enhancements[i]();
 	}
-};
-
-module.exports = browser;
+}
