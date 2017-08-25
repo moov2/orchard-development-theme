@@ -1,7 +1,5 @@
 "use strict";
 
-require('shoestring');
-
 require('app.tests');
 
 require('browser.tests');

@@ -1,5 +1,3 @@
-/* global $ */
-
 "use strict";
 
 /**
@@ -8,5 +6,7 @@
  */
 
 module.exports = function () {
-	$('html').removeClass('no-js').addClass('js');
+	var $html = document.querySelector('html');
+	$html.classList.remove('no-js');
+	$html.classList.add('js');
 };

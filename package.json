@@ -25,7 +25,6 @@
     "node-sass": "^4.5.3",
     "normalize.css": "3.0.3",
     "postcss-cli": "^4.1.0",
-    "shoestring": "1.0.3",
     "sinon": "1.17.2",
     "webpack": "^3.5.5",
     "webpack-node-externals": "^1.6.0"
