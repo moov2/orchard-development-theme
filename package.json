@@ -4,11 +4,13 @@
   "description": "This project offers a useful starting point development of a theme for [Orchard](http://www.orchardproject.net/).",
   "author": "Moov2",
   "devDependencies": {
-    "autoprefixer": "6.0.3",
+    "autoprefixer": "^6.0.3",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.1",
+    "css-loader": "^0.28.5",
+    "extract-text-webpack-plugin": "^3.0.0",
     "grunt": "0.4.5",
     "grunt-azure-cdn-deploy": "^1.0.1",
     "grunt-cleanempty": "1.0.3",
@@ -27,30 +29,28 @@
     "mocha": "^3.5.0",
     "node-sass": "^4.5.3",
     "normalize.css": "3.0.3",
-    "postcss-cli": "^4.1.0",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
     "sinon": "^3.2.1",
     "standard": "^10.0.3",
     "webpack": "^3.5.5",
     "webpack-node-externals": "^1.6.0"
   },
   "scripts": {
-    "sass:dev": "node-sass --output-style expanded ./Styles/Site.scss ./Styles/Site.css",
-    "sass:dist": "node-sass --output-style compressed ./Styles/Site.scss ./dist/Styles/Site.css",
     "css:hashmark": "hashmark -r -l 8 ./dist/Styles/Site.css ./dist/Styles/Site-{hash}.css",
-    "postcss:dev": "postcss ./Styles/Site.css -use autoprefixer --autoprefixer.browsers \"last 1 versions\" -r",
-    "postcss:dist": "postcss ./dist/Styles/Site.css -use autoprefixer --autoprefixer.browsers \"last 1 versions\" -r",
-    "js:bundle": "webpack",
-    "dist": "npm install && npm run sass:dist && npm run postcss:dist && npm run css:hashmark",
-    "develop": "npm install && npm run sass:dev && npm run postcss:dev && npm run js:webpack",
-    "test": "npm run js:bundle && karma start karma.conf.js",
+    "bundle": "webpack -d",
+    "bundle:watch": "webpack -d --watch",
+    "dist": "npm install && npm run css:bundle:dist && npm run css:hashmark",
+    "develop": "npm run bundle",
+    "test": "npm run bundle && karma start karma.conf.js",
     "lint": "standard"
   },
   "standard": {
     "ignore": [
       "gruntfile.js"
     ],
-    "globals": [ 
-      "suite", 
+    "globals": [
+      "suite",
       "test",
       "assert",
       "sinon",
