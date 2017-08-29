@@ -1,22 +1,14 @@
 # Orchard Development Theme
 
-This project offers a useful starting point for developing a theme for Orchard. Use the source files in this project as the starting point for an Orchard theme. The theme is full of useful goodies for automating development tasks and optimising the theme for deployment.
+This project offers a useful starting point for developing a theme for Orchard. Use the source files in this project as the point of departure for an Orchard theme. The theme is full of useful goodies for automating development tasks and optimising the theme for deployment.
 
 ## Prerequisites
 
-In order to work with this theme you'll need to make sure you have the following tools.
-
-### Grunt
-
-At Moov2, Grunt is our preferred automation tool. It's easy to get started with and extensible with hundreds of [plugins available via NPM](http://gruntjs.com/plugins) and it's straight forward creating your own. In this project Grunt is used to automate obtaining Orchard source files, managing custom modules, themes & configuration and deploying Orchard (with a focus on deploying to Azure).   
-
-In order to install Grunt you'll need to have Node.JS installed to give you access to the node package manager (NPM). The command below will install Grunt globally and make `grunt` available on the command line. This project was developed against Grunt `v0.4.x`.
-
-`npm install -g grunt-cli`
+To work with this theme, you'll need to make sure you have the following tools.
 
 ### NodeJS
 
-As mentioned above, Grunt is used heavily in this project therefore Node.JS is required. The version of Grunt this project is using is compatible with stable Node.js versions >= `0.8.0`. To install Node.JS [visit the homepage](https://nodejs.org/), which will display options to install (recommend "Stable").
+This project contains a handful of helpful NPM scripts to assist with developing & packaging the theme. To run these NPM scripts, you'll need [Node.JS](https://nodejs.org/) installed. We recommend installing the "Stable" version.
 
 ### Orchard 
 
@@ -24,68 +16,36 @@ An Orchard theme isn't useful without a version of Orchard to use it. Download t
 
 ## Getting Started
 
-[Download the source files](https://github.com/moov2/orchard-development-theme/archive/master.zip) into a directory named after your own theme. It's not critical, but the `package.json` file should be modified to reflect the project that the theme is associated to.
+[Download the source files](https://github.com/moov2/orchard-development-theme/archive/master.zip) into a directory named after your theme. It's not critical, but the `package.json` file should be modified to reflect your project.
 
-## Developing
+## Commands
 
-Once you've got the source files into your own theme your in a position to begin extending the theme for your project. Whenever you're working on the theme you need to run the following command:
+### Develop
 
-	npm run develop
+When building a theme for any CMS, you're mostly be working with CSS, JavaScript & HTML. It's common in modern web development to write front end code and then have your source files compiled into something that will be served to the browser. 
 
-Alternatively you can run the `develop.cmd` file, which acts as a shortcut for the command above. This command runs in the background watching source files for changes triggering of compilation of CSS and JavaScript files. 
+For CSS, this theme by default uses [Sass](http://sass-lang.com/), where [Webpack](https://webpack.js.org/) handles compilation from Sass to CSS. Webpack is configured to use [autoprefixer](https://github.com/postcss/autoprefixer) via [PostCSS](https://github.com/postcss/postcss) to automatically add vendor prefixes.
 
-### CSS
+For JavaScript, this theme by default promotes writing modules with ES6 code. Webpack will compile modules into a single file (`bundle.js`) using `index.js` as an entry point. Webpack is configured to use [Babel](https://babeljs.io/) to transpile the JavaScript code to ensure browser compatibility.
 
-At Moov2 we use a preprocessors to extend the capabilities of CSS. Our preprocessor of choice is [Sass](http://sass-lang.com/). The compilation of Sass to CSS is handle by Grunt, which uses [libsass](http://sass-lang.com/libsass) to perform the conversion.
+When developing on the theme, run `npm run develop` before you get started. This script will setup Webpack to handle compilation of CSS & JavaScript, and also watch source files for any changes to trigger bundling.
 
-Out of the box, this project includes a handful of useful partials that assist with speeding up constructing CSS for the theme. Each partial contains documentation on it's contribution to the final CSS file. [BEM](http://cssguidelin.es/#bem-like-naming) is the default naming convention for CSS that comes with the theme.
+### Linting
 
-Any changes to `*.scss` files while the `develop` command is running compile Sass files into `Site.css`.
+Linting is used to help developers to write consistent and quality code. Currently, the theme is only set up to analyse the JavaScript using [Standard JS](https://standardjs.com/). 
 
-### JavaScript
+Use `npm run lint` to lint the source files.
 
-This theme comes with a snippet of JavaScript, however under the hood it has a powerful set of features that assist with writing consistent, optimised and tested JavaScript.
+*Standard JS has plugins for a [whole host of text editors](https://standardjs.com/index.html#are-there-text-editor-plugins).*
 
-#### Browserify
+### Testing
 
-At Moov2 we favour developing JavaScript in a modular style then use a tool to handle bundling modules into a single compressed file that is referenced in the HTML. Our tool of choice is [browserify](http://browserify.org/), which [integrates easily](https://www.npmjs.com/package/grunt-browserify) with Grunt.
+When writing new JavaScript modules, it's good practice to write tests. The theme is setup to use [Mocha](https://mochajs.org/) to write and execute JavaScript tests.
 
-Any changes to `*.js` files while the `develop` command is running will bundle modules referenced in `index.js` into a single file named `bundle.js`.
+Use `npm run test` to run the JavaScript tests.
 
-#### JSHint
+### Distributable
 
-JSHint is used to improve the quality of the projects JavaScript and ensure multiple developers are writing code in a consistent manner. Edit the `.jshintrc` file to [customise options](http://jshint.com/docs/options/) for your project.
+When deploying the theme it should be packaged using the distributable command. This command will create optimised bundles for the CSS & JavaScript and ensure only required theme files are deployed. This command will create a distributable version within the `/dist` directory.
 
-Any changes to `*.js` files while the `develop` command is running will lint the JS code and output any discrepancies. It should be noted, any discrepancies when building a distributable version will cause the build to fail.
-
-#### Testing
-
-Developing JavaScript using a modular approach lends itself well for writing tests for you code. Each module can be tested in isolation through unit tests. This project uses the popular [Mocha](https://mochajs.org/) JavaScript testing framework for running unit tests. An example set of unit tests can be found in the `Scripts\tests` directory to help get you started.
-
-Any changes to `*.js` files while the `develop` command is running will run all the unit tests code and display the results. It should be noted, any test failures during the distributable build will cause the build to fail.
-
-## Distributable
-
-The files in this project are source files that aren't ready for production. Running the command below will create a fully optimised production ready version of the theme, which will be saved to the `dist` directory in the root directory of the theme.
-
-`npm run dist`
-
-The command above is a shortcut for running the `dist` Grunt task.
-
-## Deploying Assets to Azure CDN
-    
-One of the main objective of this theme is to assist with improving the overall page speed to the client. It's [recommended](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/quick-start-quide#TOC-Use-of-CDN:) that client side assets (media, scripts & styles) should be served via a CDN to reduce distance files travel from server to client globally and it also reduced the amount of requests handle by the server(s) hosting the site.
-
-To serve assets from a CDN they have to first be uploaded to the CDN and then all the URLs in the HTML need to point to the CDN. Luckily this has all been catered for already and can be done by passing arguments to the `dist` grunt task as shown below.
-
-	grunt dist -cdnUrl=http://az123456.vo.msecnd.net -container=theme -accountName=myAzureAccount -accountKey=cys6fvLEyk2VdUDb7P+WIyvmpv4XQ8SnpCn2PgZH0gg==
-
-*Tip: Instead of having to remember the command above, add the command to the `scripts` object in `package.json`, example below.*
-
-	"scripts": {
-	    "dist": "npm install & grunt dist",
-	    "develop": "npm install & grunt",
-	    "prod": "npm install && grunt dist -cdnUrl=http://az123456.vo.msecnd.net -container=theme -accountName=myAzureAccount -accountKey=cys6fvLEyk2VdUDb7P+WIyvmpv4XQ8SnpCn2PgZH0gg=="
-    }
-  
- *Running `npm run prod` will create a distributable version of the theme whose assets are served from a CDN.*
+Use `npm run dist` to create production ready version of theme.
