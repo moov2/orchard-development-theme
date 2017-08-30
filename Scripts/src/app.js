@@ -4,17 +4,15 @@
  * of the application.
  */
 
-export default function () {
-  return {
-    /**
-     * Adds new layer to application.
-     */
-    addLayer: function (layer) {
-      if (!layer) {
-        return
-      }
-
-      layer()
+export default {
+  /**
+   * Adds new layer to application.
+   */
+  addLayer: function (layer) {
+    if (!layer) {
+      return
     }
+
+    layer()
   }
 }
