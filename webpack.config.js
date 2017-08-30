@@ -6,7 +6,7 @@ module.exports = [{
   name: 'js',
   entry: './Scripts/index.js',
   output: {
-    path: path.resolve(__dirname, '/Scripts'),
+    path: path.resolve(__dirname, './Scripts'),
     filename: 'bundle.js'
   },
   module: {
@@ -23,7 +23,7 @@ module.exports = [{
   name: 'js-tests',
   entry: './Scripts/tests/suite.js',
   output: {
-    path: path.resolve(__dirname, '/Scripts/tests'),
+    path: path.resolve(__dirname, './Scripts/tests'),
     filename: 'suite.bundle.js'
   },
   module: {
