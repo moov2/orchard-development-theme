@@ -35,8 +35,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "copy": "copyfiles Placement.info Theme.png Theme.txt **/*Web.config Content/**/* Styles/Site.css Scripts/bundle.js Views/*.cshtml dist",
-    "css:hash": "hashmark -c dist -r -l 8 ./Styles/Site.css '{dir}/{name}.{hash}.{ext}' | replaceinfiles -s './dist/Views/Document.cshtml' -d '{dir}/{base}' -S",
-    "js:hash": "hashmark -c dist -r -l 8 ./Scripts/bundle.js '{dir}/{name}.{hash}.{ext}' | replaceinfiles -s './dist/Views/Document.cshtml' -d '{dir}/{base}' -S",
+    "css:hash": "hashmark -c dist -r -l 8 ./Styles/Site.css {dir}/{name}.{hash}.{ext} | replaceinfiles -s './dist/Views/Document.cshtml' -d '{dir}/{base}' -S",
+    "js:hash": "hashmark -c dist -r -l 8 ./Scripts/bundle.js {dir}/{name}.{hash}.{ext} | replaceinfiles -s './dist/Views/Document.cshtml' -d '{dir}/{base}' -S",
     "bundle": "webpack -d",
     "bundle:dist": "webpack -p",
     "bundle:watch": "webpack -d --watch",
