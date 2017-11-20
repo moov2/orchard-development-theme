@@ -12,39 +12,142 @@
 $url-images: '../Content/';
 
 /**
- * Font settings.
- */
+* SPACING
+*/
 
+$base-unit: 1.2rem;
+
+$spacing-tiny: $base-unit/4;
+$spacing-small: $base-unit/2;
+$spacing-default: $base-unit;
+$spacing-large: $base-unit*2;
+$spacing-huge: $base-unit*4;
+
+/**
+* BORDER
+*/
+
+$border-radius: $base-unit/4;
+
+$input-border-width: 1px;
+
+/**
+* BREAKPOINTS
+*/
+
+$bp-mobile-small: 320px;
+$bp-mobile: 375px;
+$bp-mobile-large: 425px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+$bp-desktop-medium: 1440px;
+$bp-desktop-large: 1920px;
+
+$bp-grid-stack: 48em;
+
+$bp-logo-large: 87.5em;
+
+$bp-header-toggle: 52em;
+
+/**
+* BUTTONS
+*/
+
+$btn-tab-width: 140px;
+
+/**
+* COLOURS
+*/
+
+$color-black: #2D2B2D;
+$color-grey: #595959;
+$color-white: #FFFFFF;
+
+$color-blue: #0064ff;
+
+$color-error-text: #d40909;
+
+$color-label-default: $color-grey;
+
+$color-link-default: $color-blue;
+
+$color-text-title: $color-white;
+
+$color-facebook: #3B5998;
+$color-googleplus: #DC4E41;
+$color-instagram: #E4405F;
+$color-twitter: #1DA1F2;
+$color-youtube: #CD201F;
+
+/**
+* FONT
+*/
+
+$font-family-heading: "Source Sans Pro", sans-serif;
 $font-family-default: "Source Sans Pro", sans-serif;
 
-$font-size-default-em: 1.6em;
-$font-size-default: 1.6rem;
-
-$font-size-heading: 3.6rem;
-
-$font-weight-light: 300;
-$font-weight-default: 400;
 $font-weight-bold: 700;
+$font-weight-default: 400;
+
+$font-size-heading: 5.6rem;
+$font-size-heading-mobile: 2.8rem;
+
+$font-size-heading-2: 4rem;
+$font-size-heading-2-mobile: 2.4rem;
+
+$font-size-heading-3: 2.4rem;
+$font-size-heading-3-mobile: 2rem;
+
+$font-size-heading-4: 2.4rem;
+$font-size-heading-4-mobile: 2rem;
+
+$font-size-heading-5: 2.4rem;
+$font-size-heading-5-mobile: 2rem;
+
+$font-size-heading-6: 2.4rem;
+$font-size-heading-6-mobile: 2rem;
+
+$font-size-hero: 6rem;
+$font-size-large: 1.9rem;
+$font-size-default: 1.8rem;
+$font-size-small: 1.4rem;
+
+$font-size-default-em: 1.6em;
+
+$letter-spacing-loose: 1px;
+
+$line-height-default: 1.4;
 
 /**
- * Spacing settings
- */
+* GRID
+*/
 
-$spacing-base: 1rem;
-$spacing-large: 3rem;
+$grid-gap-default: $spacing-large;
+$grid-gap-large: $spacing-large * 1.5;
+$grid-gap-huge: $spacing-huge * 1.5;
 
-/**
- * Layout settings.
- */
- 
-$layout-width-max: 1200px;
 
 /**
- * Text settings.
- */
- 
+* TRANSITION
+*/
+
+$transition-duration-default: .4s;
+
+
 /**
- * Text settings.
- */
- 
-$text-line-height-default: 2rem;
+* WIDTH
+*/
+
+$width-content: 1200px;
+$width-content-large: 1560px;
+$width-header-content: 1330px;
+
+
+/**
+* Z-INDEX
+*/
+
+$z-index-front: 100;
+$z-index-default: 1;
+$z-index-under: -1;
+$z-index-back: -100;
