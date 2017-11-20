@@ -1,0 +1,65 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $HERO
+ * -----------------------------------------------------------------------------
+ */
+
+/**
+* 1. This makes IE recalculate the height of elements, preventing the container
+*    being much taller than its content.
+*/
+.hero {
+    display: inline-block;
+    @include rem(margin-bottom, $spacing-huge);
+    min-height: 1px; /* 1. */ 
+    position: relative;
+    width: 100%;  
+    
+    background: lighten($color-grey, 60%);
+
+    &__content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: $width-content;
+        @include rem(padding-bottom, $spacing-huge * 1);
+        @include rem(padding-top, $spacing-huge * 3);
+
+        @supports (display: flex) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &--left {
+            & > * {
+                @include bp-min-width($bp-mobile-large) {
+                    @include rem(margin-right, $spacing-huge * 3);
+                }
+
+                @include bp-min-width($bp-tablet) {
+                    @include rem(margin-right, $spacing-huge * 8);
+                }
+
+                @include bp-min-width($bp-desktop-medium) {
+                    @include rem(margin-right, $spacing-huge * 12);
+                }
+            }
+        }
+
+        &--right {
+            & > * {
+                @include bp-min-width($bp-mobile-large) {
+                    @include rem(margin-left, $spacing-huge * 3);
+                }
+
+                @include bp-min-width($bp-tablet) {
+                    @include rem(margin-left, $spacing-huge * 8);
+                }
+
+                @include bp-min-width($bp-desktop-medium) {
+                    @include rem(margin-left, $spacing-huge * 12);
+                }
+            }
+        }
+    }
+}

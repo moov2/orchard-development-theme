@@ -1,0 +1,39 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $LIST
+ * -----------------------------------------------------------------------------
+ */
+
+.list {
+    @include list-reset();
+}
+
+.list--horizontal {
+    @include list-horizontal();
+}
+
+.list--horizontal.list--spaced {
+    @include list-horizontal-spaced();
+}
+
+.list--horizontal.list--divided {
+    @include list-horizontal-divided();
+}
+
+.list--divided {
+    @include list-divided();
+}
+
+.list--divided.list--opaque {
+    @include list-divided-opaque();    
+}
+
+.list--divided.list--spaced-large {
+    > li {
+        @include rem(padding, $spacing-large);
+    }
+}
+
+.list--spaced {
+    @include list-spaced();
+}
