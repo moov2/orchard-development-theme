@@ -9,7 +9,9 @@
  */
  
 legend {
-	@include rem(margin-bottom, $spacing-base);
+	@include rem(margin-bottom, $spacing-default);
+	@include rem(padding-left, $spacing-default);
+	@include rem(padding-right, $spacing-default);
 	
 	font-weight: $font-weight-bold;
 }
