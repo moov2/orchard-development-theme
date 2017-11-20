@@ -1,0 +1,16 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $LABEL
+ * -----------------------------------------------------------------------------
+ */
+
+label {
+    @include rem(font-size, $font-size-small);
+	@include rem(margin-bottom, $spacing-small);
+
+    display: block;
+    width: 100%;
+
+    color: $color-label-default;
+	font-weight: $font-weight-default;
+}

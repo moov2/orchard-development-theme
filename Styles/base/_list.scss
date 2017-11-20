@@ -1,0 +1,33 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $LIST-BASE
+ * -----------------------------------------------------------------------------
+ */
+
+ul,
+ol {
+    @include rem(margin-bottom, $spacing-large);
+    @include rem(padding-left, $spacing-large);
+
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    width: 100%;
+
+    > li {
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .validation-summary-errors & {
+        @include rem(margin-top, $spacing-default);
+    }
+}
+

@@ -1,0 +1,16 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $BUTTON
+ * -----------------------------------------------------------------------------
+ */
+
+button, .btn {
+    border: 0;
+    @include rem(padding, $spacing-small $spacing-default);
+
+    background-color: $color-blue;
+    color: $color-white;
+    font-weight: $font-weight-bold;
+
+    cursor: pointer;
+}
