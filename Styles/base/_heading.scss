@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-	@include rem(margin-bottom, $spacing-base);
+	@include rem(margin-bottom, $spacing-default);
 	
 	line-height: 1; /* 1. */
 	
@@ -32,26 +32,26 @@ h1 {
 }
 
 h2 {
-	@include rem(font-size, 3rem);
+	@include rem(font-size, $font-size-heading-2);
 	@include rem(line-height, 3.6rem);
 }
 
 h3 {
-	@include rem(font-size, 2.4rem);
+	@include rem(font-size, $font-size-heading-3);
 	@include rem(line-height, 3rem);
 }
 
 h4 {
-	@include rem(font-size, 2rem);
+	@include rem(font-size, $font-size-heading-4);
 	@include rem(line-height, 2.6rem);
 }
 
 h5 {
-	@include rem(font-size, 1.8rem);
+	@include rem(font-size, $font-size-heading-5);
 	@include rem(line-height, 2.4rem);
 }
 
 h6 {
-	@include rem(font-size, 1.4rem);
+	@include rem(font-size, $font-size-heading-6);
 	@include rem(line-height, 1.8rem);
 }
