@@ -12,6 +12,8 @@
  */
 
 @import "mixins/clearfix";
+@import "mixins/list";
+@import "mixins/media-queries";
 @import "mixins/rem";
 
 /**
@@ -27,18 +29,38 @@
 
 @import "base/html";
 @import "base/body";
+@import "base/button";
 @import "base/fieldset";
 @import "base/heading";
 @import "base/image";
 @import "base/input";
+@import "base/label";
 @import "base/legend";
 @import "base/link";
+@import "base/list";
 @import "base/paragraph";
 @import "base/svg";
+
+/**
+ * Styles for the components, e.g. hero, section, header, footer etc...
+ */
+
+@import "components/hero";
+@import "components/list"; 
+@import "components/menu"; 
 
 /**
  * Styles to assist with layout.
  */
 
-@import "layout/list"; 
+@import "layout/container";
+@import "layout/header";
 @import "layout/main";
+
+/**
+ * Styles to trump other attributes.
+ */
+
+@import "trumps/display";
+@import "trumps/flex";
+@import "trumps/margin";
