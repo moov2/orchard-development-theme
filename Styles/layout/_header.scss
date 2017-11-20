@@ -1,0 +1,66 @@
+/**
+ * -----------------------------------------------------------------------------
+ * $HEADER
+ * -----------------------------------------------------------------------------
+ */
+
+/**
+ * Layout for the site header. Only styling that affects the layout of the
+ * header should be present in this partial. The appearance and contents of
+ * the header should be built up through components.
+ */
+
+.header {
+    display: block;    
+}
+
+.header--main {
+    position: relative;
+    z-index: $z-index-front;
+
+    @include rem(padding, $spacing-small);
+    @include rem(padding-top, $spacing-default);
+    @include rem(padding-bottom, $spacing-default);
+
+    @include bp-min-width($bp-header-toggle) {
+        justify-content: center;
+        @include rem(padding, $spacing-default);
+    }
+}
+
+    .header__content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: $width-content;
+
+        @supports (display: flex) {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .header__logo {
+        display: block;
+
+        @include rem(margin-right, $spacing-small);
+
+        @include bp-min-width($bp-tablet) {
+            @include rem(margin-right, $spacing-large);
+        }
+
+        @include bp-min-width($bp-desktop-medium) {
+            @include rem(margin-right, $spacing-huge);
+        }
+
+        a { display: block; }
+    }
+
+    .header__nav {
+        display: none;
+
+        @include bp-min-width($bp-header-toggle) {
+            display: block;
+        }
+    }
