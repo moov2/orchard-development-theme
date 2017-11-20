@@ -1,7 +1,19 @@
 <div class="main">
-    @if (Model.Header != null) {
-        @Display(Model.Header)
-    }
+    <header class="header header--main">
+        <div class="header__content">
+            <div class="header__logo">
+                @if (Model.SiteLogo != null) {
+                    @Display(Model.SiteLogo)
+                }
+            </div>
+            <div class="header__nav">
+                @if (Model.MainMenu != null) {
+                    @Display(Model.MainMenu)
+                }
+            </div>
+        </div>
+    </header>
+    
     
     @if (Model.Content != null) {
         @Display(Model.Content)
