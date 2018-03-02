@@ -39,7 +39,7 @@
     "bundle:dist": "webpack -p",
     "bundle:watch": "webpack -d --watch",
     "dist": "npm run clean && npm run bundle:dist && npm run copy && npm run css:hash && npm run js:hash",
-    "develop": "npm run bundle",
+    "develop": "npm run bundle:watch",
     "test": "npm run bundle && karma start karma.conf.js",
     "lint": "standard"
   },
