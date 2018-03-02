@@ -1,8 +1,7 @@
-Name: NameOfYourTheme
+Name: DevelopmentTheme
 Author: Moov2
 Website: http://moov2.com
-Description: Description of your theme.
+Description: Basic theme ideally used as starting point for custom themes.
 Version: 1.0
 Zones: SiteLogo, MainMenu, Content, Footer
-# todo: provide tags
-# Tags: Classic, Serif
+Tags: Development
