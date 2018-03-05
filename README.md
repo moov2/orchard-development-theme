@@ -18,6 +18,10 @@ An Orchard theme isn't useful without a version of Orchard to use it. Download t
 
 [Download the source files](https://github.com/moov2/orchard-development-theme/archive/master.zip) into a directory named after your theme. It's not critical, but the `package.json` file should be modified to reflect your project.
 
+Alternatively the theme could be added as sub module within the theme directory. Below is an example of the command that should be run.
+
+    git submodule add git@github.com:moov2/orchard-development-theme.git themes/ThemeName
+
 ## Pattern Library
 
 In order to show different components available to the theme we're providing a pattern library. Currently the pattern library is using our [development pattern library](https://github.com/moov2/development-pattern-library), which is using [Fractal](https://fractal.build/) and it's included in the theme as a git submodule. When converting this theme to a bespoke theme, this submodule should be replaced with the git repository that contains the bespoke extension of development-pattern-library.
