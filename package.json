@@ -20,8 +20,8 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-sinon": "^1.0.5",
     "mocha": "^3.5.0",
+    "modern-normalize": "^0.4.0",
     "node-sass": "^4.5.3",
-    "normalize.css": "^7.0.0",
     "postcss-loader": "^2.0.6",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
@@ -38,10 +38,16 @@
     "bundle": "webpack -d",
     "bundle:dist": "webpack -p",
     "bundle:watch": "webpack -d --watch",
-    "dist": "npm run clean && npm run bundle:dist && npm run copy && npm run css:hash && npm run js:hash",
-    "develop": "npm run bundle:watch",
+    "dist": "npm run clean && npm run bundle:dist && npm run copy && npm run css:hash && npm run js:hash && npm run patternlibrary:dist",
+    "develop": "start npm run patternlibrary:develop && npm run bundle:watch",
     "test": "npm run bundle && karma start karma.conf.js",
-    "lint": "standard"
+    "lint": "standard",
+    "patternlibrary:install": "cd PatternLibrary && npm install",
+    "patternlibrary:build": "cd PatternLibrary && npm run dist",
+    "patternlibrary:copy": "copyfiles -u 2 PatternLibrary/dist/**/* dist/PatternLibrary && copyfiles -f Styles/Web.config dist/PatternLibrary",
+    "patternlibrary:develop": "cd PatternLibrary && npm run develop",
+    "patternlibrary:dist": "npm run patternlibrary:build && npm run patternlibrary:copy",
+    "postinstall": "npm run patternlibrary:install"
   },
   "standard": {
     "globals": [

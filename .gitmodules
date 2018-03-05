@@ -1,0 +1,3 @@
+[submodule "PatternLibrary"]
+	path = PatternLibrary
+	url = git@github.com:moov2/development-pattern-library.git

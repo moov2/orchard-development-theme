@@ -18,6 +18,14 @@ An Orchard theme isn't useful without a version of Orchard to use it. Download t
 
 [Download the source files](https://github.com/moov2/orchard-development-theme/archive/master.zip) into a directory named after your theme. It's not critical, but the `package.json` file should be modified to reflect your project.
 
+## Pattern Library
+
+In order to show different components available to the theme we're providing a pattern library. Currently the pattern library is using our [development pattern library](https://github.com/moov2/development-pattern-library), which is using [Fractal](https://fractal.build/) and it's included in the theme as a git submodule. When converting this theme to a bespoke theme, this submodule should be replaced with the git repository that contains the bespoke extension of development-pattern-library.
+
+The stylesheet for this theme is generated using Sass styles from the pattern library. 
+
+When creating a distributable version of the theme, the pattern library is compiled to HTML and included in the `PatternLibrary` directory of the distributable.
+
 ## Commands
 
 ### Develop
@@ -28,7 +36,9 @@ For CSS, this theme by default uses [Sass](http://sass-lang.com/), where [Webpac
 
 For JavaScript, this theme by default promotes writing modules with ES6 code. Webpack will compile modules into a single file (`bundle.js`) using `index.js` as an entry point. Webpack is configured to use [Babel](https://babeljs.io/) to transpile the JavaScript code to ensure browser compatibility.
 
-When developing on the theme, run `npm run develop` before you get started. This script will setup Webpack to handle compilation of CSS & JavaScript, and also watch source files for any changes to trigger bundling.
+When developing on the theme, run `npm run develop` before you get started. This script will setup Webpack to handle compilation of CSS & JavaScript, and also watch source files for any changes to trigger bundling. 
+
+`npm run develop` will also set up development with the [pattern library](#PatternLibrary).
 
 ### Linting
 
@@ -46,6 +56,6 @@ Use `npm run test` to run the JavaScript tests.
 
 ### Distributable
 
-When deploying the theme it should be packaged using the distributable command. This command will create optimised bundles for the CSS & JavaScript and ensure only required theme files are deployed. This command will create a distributable version within the `/dist` directory.
+When deploying the theme it should be packaged using the distributable command. This command will create optimised bundles for the CSS & JavaScript and ensure only required theme files are deployed. The pattern library is exported to static HTML assets that are copied to the `/PatternLibrary` directory. This command will create a distributable version within the `/dist` directory.
 
 Use `npm run dist` to create production ready version of theme.
