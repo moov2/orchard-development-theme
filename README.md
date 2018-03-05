@@ -21,6 +21,7 @@ An Orchard theme isn't useful without a version of Orchard to use it. Download t
 Alternatively the theme could be added as sub module within the theme directory. Below is an example of the command that should be run.
 
     git submodule add git@github.com:moov2/orchard-development-theme.git themes/ThemeName
+    git submodule update --init --recursive
 
 ## Pattern Library
 
