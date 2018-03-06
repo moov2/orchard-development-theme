@@ -32,9 +32,9 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "copy": "copyfiles Placement.info Theme.png Theme.txt **/*Web.config Content/**/* Styles/Site.css Scripts/bundle.js Views/*.cshtml dist",
-    "css:hash": "hashmark -c dist/Styles -r -l 8 Site.css {name}.{hash}{ext} | replaceinfiles -s ./dist/Views/Document.cshtml -d {dir}/{base} -S",
-    "js:hash": "hashmark -c dist/Scripts -r -l 8 bundle.js {name}.{hash}{ext} | replaceinfiles -s ./dist/Views/Document.cshtml -d {dir}/{base} -S",
+    "copy": "copyfiles Placement.info ThemeZonePreview.png Theme.png Theme.txt **/*Web.config Content/**/* Styles/Site.css Scripts/bundle.js Views/*.cshtml dist",
+    "css:hash": "hashmark -c dist/Styles -l 8 Site.css {name}.{hash}{ext} | replaceinfiles -s ./dist/Views/Document.cshtml -d {dir}/{base} -S",
+    "js:hash": "hashmark -c dist/Scripts -l 8 bundle.js {name}.{hash}{ext} | replaceinfiles -s ./dist/Views/Document.cshtml -d {dir}/{base} -S",
     "bundle": "webpack -d",
     "bundle:dist": "webpack -p",
     "bundle:watch": "webpack -d --watch",
